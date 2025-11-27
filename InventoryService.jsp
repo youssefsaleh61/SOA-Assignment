@@ -4,11 +4,69 @@
 <head>
     <title>Inventory Check</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+        }
+        
+        .nav {
+            background-color: #45a049;
+            padding: 10px 0;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav a:hover {
+            background-color: #3d8b40;
+        }
+        
+        .container {
             max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
         }
         
         .input-group {
@@ -95,26 +153,42 @@
 </head>
 <body>
 
-<h2>Check Product Availability</h2>
-
-<div class="input-group">
-    <input type="number" id="productId" placeholder="Enter product ID" />
-    <button onclick="checkProduct()">Check</button>
+<div class="header">
+    <div class="header-content">
+        <h1>🛒 E-Commerce System</h1>
+    </div>
 </div>
 
-<div id="checkResult" class="result"></div>
-
-<hr />
-
-<h2>Update Inventory</h2>
-
-<div class="input-group">
-    <input type="number" id="updProductId" placeholder="Product ID" />
-    <input type="number" id="updQuantity" placeholder="Quantity" />
-    <button onclick="updateInventory()">Update</button>
+<div class="nav">
+    <div class="nav-content">
+        <a href="index.jsp">Product Catalog</a>
+        <a href="InventoryService.jsp">Inventory Management</a>
+        <a href="OrderService.jsp">Order Management</a>
+    </div>
 </div>
 
-<div id="updateResult" class="result"></div>
+<div class="container">
+    <h2>Check Product Availability</h2>
+
+    <div class="input-group">
+        <input type="number" id="productId" placeholder="Enter product ID" />
+        <button onclick="checkProduct()">Check</button>
+    </div>
+
+    <div id="checkResult" class="result"></div>
+
+    <hr />
+
+    <h2>Update Inventory</h2>
+
+    <div class="input-group">
+        <input type="number" id="updProductId" placeholder="Product ID" />
+        <input type="number" id="updQuantity" placeholder="Quantity" />
+        <button onclick="updateInventory()">Update</button>
+    </div>
+
+    <div id="updateResult" class="result"></div>
+</div>
 
 <script>
 function checkProduct() {
