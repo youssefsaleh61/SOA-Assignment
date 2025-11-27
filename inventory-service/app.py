@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from db_operations import execute_stored_procedure, DatabaseExecutionError
 from werkzeug.exceptions import BadRequest
 from http import HTTPStatus
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 conn_str = (
             'DRIVER={ODBC Driver 17 for SQL Server};'
@@ -31,7 +33,7 @@ def check_product_availability(product_id):
         row = rows[0]
         product_name = row[0]
         quantity = row[1]
-        return jsonify({'message': f'Product is {'available' if product_id > 0 else 'not available.'}',
+        return jsonify({'message': f'Product is {'available' if quantity > 0 else 'not available.'}',
                     'data': {'product_name': product_name,'quantity': quantity}}), HTTPStatus.OK
     else:
         return jsonify({'error': f'Product with id {product_id} not found'}), HTTPStatus.NOT_FOUND

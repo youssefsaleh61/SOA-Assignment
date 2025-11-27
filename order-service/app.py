@@ -6,9 +6,10 @@
 from flask import Flask, request, jsonify
 from werkzeug.exceptions import BadRequest
 from http import HTTPStatus
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)  # Enable CORS for all routes
 
 ### Should be replaced with database connection and a table
 ORDER_INCREMENT = 0
