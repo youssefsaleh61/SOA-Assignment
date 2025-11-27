@@ -4,17 +4,70 @@
 <head>
     <title>Order Service</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+        }
+        
+        .nav {
+            background-color: #45a049;
+            padding: 10px 0;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav a:hover {
+            background-color: #3d8b40;
+        }
+        
+        .container {
             max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
         
         h2 {
             color: #333;
             border-bottom: 2px solid #4CAF50;
             padding-bottom: 10px;
+            margin-top: 30px;
         }
         
         .input-group {
@@ -143,44 +196,60 @@
 </head>
 <body>
 
-<h2>Create New Order</h2>
-
-<div class="input-group">
-    <label for="customerId">Customer ID:</label>
-    <input type="number" id="customerId" placeholder="Enter customer ID" />
-</div>
-
-<div class="input-group">
-    <label for="totalAmount">Total Amount:</label>
-    <input type="number" id="totalAmount" step="0.01" placeholder="Enter total amount" />
-</div>
-
-<h3>Products</h3>
-<div class="product-list" id="productList">
-    <div class="product-item">
-        <div>
-            <input type="number" class="productId" placeholder="Product ID" style="width: 120px;" />
-            <input type="number" class="productQuantity" placeholder="Quantity" style="width: 120px;" />
-        </div>
+<div class="header">
+    <div class="header-content">
+        <h1>🛒 E-Commerce System</h1>
     </div>
 </div>
 
-<button class="secondary" onclick="addProduct()">Add Another Product</button>
-<button onclick="createOrder()">Create Order</button>
-
-<div id="createResult" class="result"></div>
-
-<hr />
-
-<h2>Get Order Details</h2>
-
-<div class="input-group">
-    <label for="orderId">Order ID:</label>
-    <input type="number" id="orderId" placeholder="Enter order ID" />
-    <button onclick="getOrder()">Get Order</button>
+<div class="nav">
+    <div class="nav-content">
+        <a href="index.jsp">Product Catalog</a>
+        <a href="InventoryService.jsp">Inventory Management</a>
+        <a href="OrderService.jsp">Order Management</a>
+    </div>
 </div>
 
-<div id="getResult" class="result"></div>
+<div class="container">
+    <h2>Create New Order</h2>
+
+    <div class="input-group">
+        <label for="customerId">Customer ID:</label>
+        <input type="number" id="customerId" placeholder="Enter customer ID" />
+    </div>
+
+    <div class="input-group">
+        <label for="totalAmount">Total Amount:</label>
+        <input type="number" id="totalAmount" step="0.01" placeholder="Enter total amount" />
+    </div>
+
+    <h3>Products</h3>
+    <div class="product-list" id="productList">
+        <div class="product-item">
+            <div>
+                <input type="number" class="productId" placeholder="Product ID" style="width: 120px;" />
+                <input type="number" class="productQuantity" placeholder="Quantity" style="width: 120px;" />
+            </div>
+        </div>
+    </div>
+
+    <button class="secondary" onclick="addProduct()">Add Another Product</button>
+    <button onclick="createOrder()">Create Order</button>
+
+    <div id="createResult" class="result"></div>
+
+    <hr />
+
+    <h2>Get Order Details</h2>
+
+    <div class="input-group">
+        <label for="orderId">Order ID:</label>
+        <input type="number" id="orderId" placeholder="Enter order ID" />
+        <button onclick="getOrder()">Get Order</button>
+    </div>
+
+    <div id="getResult" class="result"></div>
+</div>
 
 <script>
 function addProduct() {
